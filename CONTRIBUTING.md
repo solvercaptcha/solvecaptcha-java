@@ -1,4 +1,4 @@
-# Contributing to solvecaptcha-go
+# Contributing to solvecaptcha-java
 
 Thank you for considering contributing to the solvecaptcha-java! By contributing, you're helping improve the project and enabling others to benefit from your improvements.
 
