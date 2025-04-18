@@ -25,6 +25,9 @@ jobs:
           gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }}
           gpg-passphrase: ${{ secrets.GPG_PASSPHRASE }}
 
+      - name: Debug settings.xml
+        run: cat ~/.m2/settings.xml
+
       - name: Build and deploy with Maven
         run: mvn --batch-mode clean deploy -Dgpg.passphrase="${{ secrets.GPG_PASSPHRASE }}"
         env:
