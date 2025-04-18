@@ -24,7 +24,8 @@ jobs:
           gpg-passphrase: ${{ secrets.GPG_PASSPHRASE }}
 
       - name: Build and deploy with Maven
-        run: mvn --batch-mode clean deploy -P gpg
+        run: mvn --batch-mode clean deploy
+
 
         env:
           OSSRH_USERNAME: ${{ secrets.OSSRH_USERNAME }}
