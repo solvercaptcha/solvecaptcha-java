@@ -6,7 +6,7 @@
 
     <groupId>io.github.solvercaptcha</groupId>
     <artifactId>solvecaptcha-java</artifactId>
-    <version>0.0.4-alpha</version>
+    <version>0.0.5-alpha</version>
 
     <name>solvecaptcha-java</name>
     <description>Java library for easy integration with the API of solvecaptcha captcha solving service to bypass recaptcha, hcaptcha, funcaptcha, geetest and solve any other captchas.</description>
@@ -36,15 +36,16 @@
     </scm>
 
     <distributionManagement>
-        <repository>
-            <id>ossrh</id>
-            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
-        </repository>
-        <snapshotRepository>
-            <id>ossrh</id>
-            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-        </snapshotRepository>
+      <repository>
+        <id>ossrh</id>
+        <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2</url>
+      </repository>
+      <snapshotRepository>
+        <id>ossrh</id>
+        <url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
+      </snapshotRepository>
     </distributionManagement>
+
 
     <properties>
         <maven.compiler.target>1.8</maven.compiler.target>
