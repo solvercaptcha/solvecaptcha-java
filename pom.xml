@@ -6,7 +6,7 @@
 
     <groupId>io.github.solvercaptcha</groupId>
     <artifactId>solvecaptcha-java</artifactId>
-    <version>0.0.3-alpha</version>
+    <version>0.0.4-alpha</version>
 
     <name>solvecaptcha-java</name>
     <description>Java library for easy integration with the API of solvecaptcha captcha solving service to bypass recaptcha, hcaptcha, funcaptcha, geetest and solve any other captchas.</description>
