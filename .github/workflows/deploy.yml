@@ -20,21 +20,16 @@ jobs:
           java-version: 17
           cache: maven
           server-id: ossrh
-          server-username: MAVEN_USERNAME
-          server-password: MAVEN_PASSWORD
+          server-username: ${{ secrets.SONATYPE_USERNAME }}
+          server-password: ${{ secrets.SONATYPE_TOKEN }}
           gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }}
           gpg-passphrase: ${{ secrets.GPG_PASSPHRASE }}
-        env:
-          MAVEN_USERNAME: ${{ secrets.OSSRH_USERNAME }}
-          MAVEN_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
 
       - name: Debug settings.xml
         run: cat ~/.m2/settings.xml
 
       - name: Build and deploy with Maven
-        run: mvn --batch-mode clean deploy -Dgpg.passphrase="${{ secrets.GPG_PASSPHRASE }}" -X
-
-        # run: mvn --batch-mode clean deploy -Dgpg.passphrase="${{ secrets.GPG_PASSPHRASE }}"
-        #env:
-        #  OSSRH_USERNAME: ${{ secrets.OSSRH_USERNAME }}
-        #  OSSRH_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
+        run: mvn --batch-mode clean deploy -s ~/.m2/settings.xml -Dgpg.passphrase="${{ secrets.GPG_PASSPHRASE }}" -X
+        env:
+          SONATYPE_USERNAME: ${{ secrets.SONATYPE_USERNAME }}
+          SONATYPE_TOKEN: ${{ secrets.SONATYPE_TOKEN }}
