@@ -19,6 +19,7 @@ jobs:
         uses: actions/setup-java@v2
         with:
           java-version: '17'
+          distribution: 'temurin'
           cache: maven
           server-id: ossrh
           server-username: ${{ secrets.GITHUB_ACTOR }}  # Using GitHub username
