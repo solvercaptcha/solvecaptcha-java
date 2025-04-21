@@ -32,7 +32,9 @@ jobs:
         run: cat ~/.m2/settings.xml
 
       - name: Build and deploy with Maven
-        run: mvn --batch-mode clean deploy -Dgpg.passphrase="${{ secrets.GPG_PASSPHRASE }}"
+        run: mvn --batch-mode clean deploy -Dgpg.passphrase="${{ secrets.GPG_PASSPHRASE }}" -X
+
+        # run: mvn --batch-mode clean deploy -Dgpg.passphrase="${{ secrets.GPG_PASSPHRASE }}"
         #env:
         #  OSSRH_USERNAME: ${{ secrets.OSSRH_USERNAME }}
         #  OSSRH_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
