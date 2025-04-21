@@ -1,0 +1,15 @@
+<!--
+  This configuration file is used for authentication when deploying artifacts
+  to the Sonatype OSSRH repository (Maven Central). The environment variables
+  SONATYPE_USERNAME and SONATYPE_TOKEN are passed via GitHub Secrets.
+-->
+
+<settings>
+  <servers>
+    <server>
+      <id>ossrh</id>
+      <username>${env.SONATYPE_USERNAME}</username>
+      <password>${env.SONATYPE_TOKEN}</password>
+    </server>
+  </servers>
+</settings>
