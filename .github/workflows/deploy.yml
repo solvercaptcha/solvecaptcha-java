@@ -6,30 +6,46 @@ on:
       - 'v*'
 
 jobs:
-  publish:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout source code
-        uses: actions/checkout@v4
+      # 1. Checkout the code
+      - name: Checkout code
+        uses: actions/checkout@v2
 
+      # 2. Set up Java with version 17
       - name: Set up Java
-        uses: actions/setup-java@v3
+        uses: actions/setup-java@v2
         with:
-          distribution: temurin
-          java-version: 17
+          java-version: '17'
           cache: maven
           server-id: ossrh
-          server-username: ${{ secrets.SONATYPE_USERNAME }}
-          server-password: ${{ secrets.SONATYPE_TOKEN }}
+          server-username: ${{ secrets.GITHUB_ACTOR }}  # Using GitHub username
+          server-password: ${{ secrets.MAVEN_GITHUB_TOKEN }}  # Using the Maven GitHub Token
           gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }}
           gpg-passphrase: ${{ secrets.GPG_PASSPHRASE }}
 
+      # 3. Create settings.xml for Maven
+      - name: Create settings.xml
+        run: |
+          mkdir -p ~/.m2
+          echo "<settings>
+                  <servers>
+                    <server>
+                      <id>ossrh</id>
+                      <username>${{ secrets.GITHUB_ACTOR }}</username>
+                      <password>${{ secrets.MAVEN_GITHUB_TOKEN }}</password>
+                    </server>
+                  </servers>
+                </settings>" > ~/.m2/settings.xml
+
+      # 4. Debug settings.xml to check the configuration
       - name: Debug settings.xml
         run: cat ~/.m2/settings.xml
 
+      # 5. Build and deploy the project using Maven
       - name: Build and deploy with Maven
         run: mvn --batch-mode clean deploy -s ~/.m2/settings.xml -Dgpg.passphrase="${{ secrets.GPG_PASSPHRASE }}" -X
         env:
-          SONATYPE_USERNAME: ${{ secrets.SONATYPE_USERNAME }}
-          SONATYPE_TOKEN: ${{ secrets.SONATYPE_TOKEN }}
+          MAVEN_GITHUB_TOKEN: ${{ secrets.MAVEN_GITHUB_TOKEN }}
