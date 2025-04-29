@@ -10,7 +10,7 @@
 
     <name>solvecaptcha-java</name>
     <description>Java library for easy integration with the API of solvecaptcha captcha solving service to bypass recaptcha, hcaptcha, funcaptcha, geetest and solve any other captchas.</description>
-    <url>https://solvecaptcha.com/</url>
+    <url>https://github.com/solvercaptcha/solvecaptcha-java</url>
 
     <licenses>
         <license>
@@ -30,21 +30,17 @@
     </developers>
 
     <scm>
-        <connection>scm:git:git://github.com/solvercaptcha/solvercaptcha-java.git</connection>
-        <developerConnection>scm:git:git@github.com:solvercaptcha/solvercaptcha-java.git</developerConnection>
-        <url>https://github.com/solvercaptcha/solvercaptcha-java</url>
+        <connection>scm:git:git://github.com/solvercaptcha/solvecaptcha-java.git</connection>
+        <developerConnection>scm:git:git@github.com:solvercaptcha/solvecaptcha-java.git</developerConnection>
+        <url>https://github.com/solvercaptcha/solvecaptcha-java</url>
     </scm>
 
-    <distributionManagement>
-      <repository>
-        <id>ossrh</id>
-        <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2</url>
-      </repository>
-      <snapshotRepository>
-        <id>ossrh</id>
-        <url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
-      </snapshotRepository>
-    </distributionManagement>
+   <distributionManagement>
+     <repository>
+       <id>central</id>
+       <url>https://central.sonatype.com/content/repositories/central</url>
+     </repository>
+   </distributionManagement>
 
 
     <properties>
